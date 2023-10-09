@@ -1,0 +1,181 @@
+*
+{
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+body
+{
+    display:flex;
+    flex-direction:column;
+    background-color:rgb(46, 45, 45);
+    color:white;
+    font-family:"ArcadeClassic";
+}
+
+.header
+{
+    margin:1rem 0;
+    display:flex;
+    justify-content: space-around;
+    // border:2px solid red;
+    height:10vh;
+    align-items: center;
+
+    &__again
+    {
+        width:fit-content;
+        // border:2px solid green;
+        height:fit-content;
+        text-align: center;
+        font-size:1.5rem;
+        background-color: white;
+        padding:1rem;
+        color:rgb(46, 43, 43);
+        cursor:pointer;
+
+        
+        
+    }
+    &__numberInfo
+    {
+        font-size:1.2rem;
+        align-self: flex-start;
+    }
+}
+
+.main
+{
+    // border:2px solid red;
+    height:80vh;
+    display:grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr 3fr 1.5fr 2fr;
+    grid-template-areas: "guess guess"
+                         "number number"
+                         "fourteen status-text"
+                         "check score";
+
+    &__guess
+    {
+        grid-area: guess;
+        // border:2px solid red;
+        font-size:2.3rem;
+        text-align: center;
+        align-self: center;
+
+        // vertical-align: bottom;
+        // justify-self: center;
+        // align-content: center;
+    }
+
+    &__fourteen
+    {
+        grid-area:number;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color:black;        
+        // border:2px solid yellow;
+        .number
+        {
+            // border:2px solid yellow;
+            font-size:5rem;
+            width:fit-content;
+            height:fit-content;
+            padding:1rem;
+            position:fixed;
+            background-color: white;
+
+        }
+
+        hr
+        {
+            
+            width:100%;
+            height:0.2rem;
+            border:none;
+            background-color:white;
+        }
+    }
+
+    &__input
+    {
+        width:70%;
+        height:fit-content;
+        font-size:5rem;
+        font-family: "ArcadeClassic";
+        justify-self:center;
+        align-self:start;
+        grid-area:fourteen;
+        border:2px solid white;
+        color:white;
+        text-align: center;
+        outline:none;
+        background-color:rgb(42, 41, 41);
+        // appearance:none;
+    }
+
+    &__status-text
+    {
+        font-size:1.2rem;
+        grid-area:status-text;
+        align-self: start;
+        justify-self: center;
+        width:max-content;
+        padding:1rem;
+        // font-family:'Times New Roman', Times, serif;
+        // border:2px solid red;
+    }
+
+    &__check
+    {
+        font-size:1.2rem;
+        font-family:"ArcadeClassic";
+        height:fit-content;
+        width:fit-content;
+        padding:0.5rem 1rem;
+        grid-area:check;
+        align-self: start;
+        justify-self: center;
+        cursor: pointer;
+
+        
+    }
+
+    &__scores
+    {
+        grid-area:score;
+        font-size: 1.2rem;
+
+        &--score
+        {
+            margin-bottom: 0.5rem;
+        }
+    }
+}
+
+
+.win-background--body
+{
+    background-color:#7dd56f;
+}
+
+.win-background--input
+{
+    background-color: white;
+    color:black;
+    border:2px solid black;
+}
+
+.invalid-input
+{
+    border:2px solid red;
+    border-radius: 2px 2px;
+}
+
+.smaller_font
+{
+    font-size:2rem;
+}
