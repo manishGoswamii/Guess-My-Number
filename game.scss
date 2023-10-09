@@ -12,20 +12,57 @@ body
     color:white;
     font-family:"ArcadeClassic";
 }
+section.error
+{
+    width:100%;
+    height:100vh;
+    font-size:1.5rem;
+    text-align: center;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    position:relative;
+    display:none;
+
+    @media(max-width:50rem)
+    {
+        display: flex;
+    }
+    & img
+    {
+        width:100%;
+        height:auto;
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        z-index: -1;
+    }
+
+    & p
+    {
+        background-color: rgba(0, 0, 0, 0.431);
+    }
+}
 
 .header
-{
+{   
     margin:1rem 0;
     display:flex;
     justify-content: space-around;
-    // border:2px solid red;
     height:10vh;
     align-items: center;
 
+    @media(max-width:50rem)
+    {
+        display:none;
+    }
     &__again
     {
         width:fit-content;
-        // border:2px solid green;
         height:fit-content;
         text-align: center;
         font-size:1.5rem;
@@ -46,7 +83,7 @@ body
 
 .main
 {
-    // border:2px solid red;
+
     height:80vh;
     display:grid;
     grid-template-columns: 50% 50%;
@@ -56,17 +93,19 @@ body
                          "fourteen status-text"
                          "check score";
 
+@media(max-width:50rem)
+{
+    display:none;
+
+}
+
     &__guess
     {
         grid-area: guess;
-        // border:2px solid red;
         font-size:2.3rem;
         text-align: center;
         align-self: center;
 
-        // vertical-align: bottom;
-        // justify-self: center;
-        // align-content: center;
     }
 
     &__fourteen
@@ -154,6 +193,8 @@ body
             margin-bottom: 0.5rem;
         }
     }
+
+
 }
 
 
