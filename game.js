@@ -12,41 +12,37 @@ const againDiv = document.querySelector(".header__again");
 
 const displayedText = document.querySelector(".main__guess");
 
-checkButton.disabled = true;
-//Input validation code.
-mainInput.addEventListener("input", function ()
-{   
-    const guessNumber = +mainInput.value;
-    // console.log(typeof mainInput.value);
-    
-    if( isNaN(guessNumber) || guessNumber>20 || guessNumber<1)
-    {
-        checkButton.disabled = true; 
-        mainInput.classList.add("invalid-input");
-    }
-    else 
-    {
-        checkButton.disabled = false;
-        mainInput.classList.remove("invalid-input");
+let limit = 20;
 
 
-    }
-    // console.log(typeof guessNumber);
-    // console.log(guessNumber);
-
-});
-
+//disable check button
 function disableCheckButton()
 {
     checkButton.classList.add("disable-pointer-events");
     checkButton.disabled = true;
-
 }
+
+//enable check button
 function enableCheckButton()
 {
     checkButton.disabled=false;
     checkButton.classList.remove("disable-pointer-events");
 }
+
+//invalidate input field
+function invalidateMainInput()
+{
+    mainInput.classList.add("invalid-input");
+}
+
+//validate input field
+function validateMainInput()
+{
+    mainInput.classList.remove("invalid-input");
+
+}
+
+//disable main inputfield
 function disableMainInput()
 {
     mainInput.disabled=true;
@@ -55,6 +51,7 @@ function disableMainInput()
 
 }
 
+//enable main inputfield
 function enableMainInput()
 {
     mainInput.disabled=false;
@@ -64,7 +61,27 @@ function enableMainInput()
 }
 
 
-let limit = 20;
+//Input validation code.
+mainInput.addEventListener("input", function ()
+{   
+    const guessNumber = +mainInput.value;
+    // console.log(typeof mainInput.value);
+    
+    if( isNaN(guessNumber) || guessNumber>20 || guessNumber<1)
+    {
+        disableCheckButton();
+        invalidateMainInput();
+    }
+    else 
+    {
+        enableCheckButton();
+        validateMainInput();
+    }
+
+});
+
+
+
 function check() {
     
     numberFromUser = +mainInput.value;
@@ -124,6 +141,8 @@ function checkForKeydown(e)
     }
     
 }
+
+disableCheckButton();
 checkButton.addEventListener("click", check );
 mainInput.addEventListener("keydown", checkForKeydown);
 
