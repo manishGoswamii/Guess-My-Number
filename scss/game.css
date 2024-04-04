@@ -177,4 +177,12 @@ section.error p {
 
 .smaller_font {
   font-size: 2rem;
+}
+
+.disabled-blur {
+  opacity: 0.5;
+}
+
+.disable-pointer-events {
+  pointer-events: none;
 }/*# sourceMappingURL=game.css.map */

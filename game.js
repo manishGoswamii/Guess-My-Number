@@ -36,10 +36,36 @@ mainInput.addEventListener("input", function ()
 
 });
 
+function disableCheckButton()
+{
+    checkButton.classList.add("disable-pointer-events");
+    checkButton.disabled = true;
+
+}
+function enableCheckButton()
+{
+    checkButton.disabled=false;
+    checkButton.classList.remove("disable-pointer-events");
+}
+function disableMainInput()
+{
+    mainInput.disabled=true;
+    mainInput.classList.add("disabled-blur");
+    mainInput.classList.add("disable-pointer-events");
+
+}
+
+function enableMainInput()
+{
+    mainInput.disabled=false;
+    mainInput.classList.remove("disabled-blur");
+    mainInput.classList.remove("disable-pointer-events");
+
+}
+
 
 let limit = 20;
-
-checkButton.addEventListener("click", function () {
+function check() {
     
     numberFromUser = +mainInput.value;
     if (randomNumber === numberFromUser) 
@@ -52,7 +78,8 @@ checkButton.addEventListener("click", function () {
         {
             highScore.textContent=score.textContent;
         }
-        
+        disableCheckButton();
+        disableMainInput();
     }
     else
     {
@@ -69,28 +96,48 @@ checkButton.addEventListener("click", function () {
 
     }
     
-
     if(limit<1)
     {
-        checkButton.disabled = true;
         displayedText.classList.add("smaller_font");
         displayedText.textContent=`Out of chances. Lost!
-        Press "Again" to restart`;
-        
+        Press "Again" to restart`;    
         displayNumber.textContent=randomNumber;
-
+        disableCheckButton();
+        disableMainInput();
     }
     // prompt(numberFromUser + "  " + randomNumber);
-});
+}
+
+function checkForKeydown(e)
+{   
+    if(e.key==="Enter")
+    {   
+        if(mainInput.classList.contains("invalid-input"))
+        {
+            return;
+        }
+        if(mainInput.value==="")
+        {
+                return;
+        }
+        check();
+    }
+    
+}
+checkButton.addEventListener("click", check );
+mainInput.addEventListener("keydown", checkForKeydown);
+
 
 
 againDiv.addEventListener("click",()=>
-{
+{   
+    enableMainInput();
     score.textContent=20;
     body.classList.remove("win-background--body");
     mainInput.classList.remove("win-background--input");
+    mainInput.classList.remove("invalid-input");
     mainInput.value = "";
-    checkButton.disabled=true;
+
     displayNumber.textContent="?";
     currentStatus.textContent = "Start Guessing....";
     randomNumber = Math.floor(Math.random() * 21);
